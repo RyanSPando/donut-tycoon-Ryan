@@ -18,15 +18,14 @@ describe('routes : index', () => {
   });
 
   describe('GET /', () => {
-    it('should render the index', (done) => {
+    it('base path should redirect to shops', (done) => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
+        res.redirects.length.should.equal(1);
         res.status.should.equal(200);
         res.type.should.equal('text/html');
         res.text.should.contain('<h1>Shops</h1>');
-        res.header['location'].should.include('/shops');
         done();
       });
     });
@@ -41,6 +40,20 @@ describe('routes : index', () => {
         res.status.should.equal(404);
         res.type.should.equal('application/json');
         res.body.message.should.eql('Not Found');
+        done();
+      });
+    });
+  });
+
+  describe('GET /shops', () => {
+    it('should render the shops page', (done) => {
+      chai.request(server)
+      .get('/shops')
+      .end((err, res) => {
+        res.redirects.length.should.equal(1);
+        res.status.should.equal(200);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>Shops</h1>');
         done();
       });
     });

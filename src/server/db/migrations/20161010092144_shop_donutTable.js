@@ -2,10 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('shop_donut', (table) => {
     table.increments();
-    table.integer('shop_id');
-    table.foreign('shop_id').references('id').inTable('shop');
-    table.integer('donut_id');
-    table.foreign('donut_id').references('id').inTable('donut');
+    table.integer('shop_id').references('id').inTable('shop').onDelete('CASCADE');
+    table.integer('donut_id').references('id').inTable('donut').onDelete('CASCADE');
   });
 };
 

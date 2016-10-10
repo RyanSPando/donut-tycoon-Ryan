@@ -9,7 +9,7 @@ exports.seed = (knex, Promise) => {
         const maxDonuts = donuts[0].max;
         const minDonuts = maxDonuts - 3;
         let promises = [];
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 20; i++) {
           let promise = knex('employee').insert({
             first_name: faker.name.firstName(),
             last_name: faker.name.lastName(),

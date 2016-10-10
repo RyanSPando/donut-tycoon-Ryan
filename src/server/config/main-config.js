@@ -10,6 +10,8 @@
   const flash = require('connect-flash');
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
+  const connect = require('connect');
+  const methodOverride = require('method-override');
 
   // *** view folders *** //
   const viewFolders = [
@@ -43,6 +45,7 @@
     // }));
     app.use(flash());
     app.use(express.static(path.join(__dirname, '..', '..', 'client')));
+    app.use(methodOverride('_method'));
 
   };
 

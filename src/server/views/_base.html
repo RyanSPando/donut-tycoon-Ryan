@@ -14,12 +14,23 @@
     <!-- stylesheets -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
     {% block css %}{% endblock %}
   </head>
   <body>
-      {% block content %}
-      {% endblock %}
+    <nav id="nav" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid navbar-header">
+        <ul class="nav navbar-nav">
+          <li><a class="btn btn-lg btn-success" href="/shops">Shops</a></li>
+          <li><a class="btn btn-lg btn-success" href="/donuts">Donuts</a></li>
+          <li><a class="btn btn-lg btn-success" href="/employees">Employees</a></li>
+        </ul>
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>

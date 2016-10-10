@@ -5,10 +5,8 @@ exports.up = function(knex, Promise) {
     table.text('first_name').notNullable();
     table.text('last_name').notNullable();
     table.text('email').notNullable();
-    table.integer('favorite_donut');
-    table.foreign('favorite_donut').references('id').inTable('donut');
-    table.integer('shop_id');
-    table.foreign('shop_id').references('id').inTable('shop');
+    table.integer('favorite_donut').references('id').inTable('donut').onDelete('CASCADE');
+    table.integer('shop_id').references('id').inTable('shop').onDelete('CASCADE');
   });
 };
 
