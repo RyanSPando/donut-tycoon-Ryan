@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const helper = require('../controllers/donuts');
+const helperShop = require('../controllers/shops');
 
 router.get('/', (req, res, next) => {
   helper.getDonuts().then((donuts) => {
@@ -51,7 +52,11 @@ router.get('/:id/edit', (req, res, next) => {
     id: req.params.id,
     title: `Edit ${req.query.name}`
   };
-  res.render('editDonut',renderObject);
+  helperShop.getShops().then(shops => {
+    renderObject.shops = shops;
+    res.render('editDonut',renderObject);
+  });
+
 });
 
 router.put('/:id/edit', (req, res, next) => {
