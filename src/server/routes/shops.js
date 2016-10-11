@@ -29,7 +29,6 @@ router.get('/:id', (req, res, next) => {
   let shopEmployeePromise = helper.joinStoreEmployee(req.params.id);
   let shopDonutPromise = helper.joinStoreDonut(req.params.id);
   Promise.all([shopEmployeePromise, shopDonutPromise]).then(resolvedPromises => {
-    console.log(resolvedPromises[0]);
     renderObject.title = resolvedPromises[0][0].store_name;
     renderObject.employees = resolvedPromises[0];
     renderObject.donuts = resolvedPromises[1];

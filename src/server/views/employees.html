@@ -1,0 +1,51 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1>{{title}}</h1>
+    <a href="/employees/newEmployee"><button class="btn btn-info" type="button" name="newPage">Add New Employee</button></a>
+    <h3><a href="/employees">Return to Employees</a></h3>
+    <div class="row">
+      <div class="col-xs-10">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th>
+              <h4>Employee Name</h4>
+            </th>
+            <th>
+              <h4>Email</h4>
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+          </thead>
+          <tbody>
+            {% for employee in employees%}
+            <tr>
+              <td>
+                <a href="/employees/{{employee.id}}">{{employee.first_name}} {{employee.last_name}}</a>
+              </td>
+              <td>
+                {{employee.email}}
+              </td>
+              <td>
+                <a href="/employees/{{employee.id}}/edit?first_name={{employee.first_name}}&last_name={{employee.last_name}}&email={{employee.email}}&favorite_donut={{employee.favorite_donut}}&shop_id={{employee.shop_id}}"><button class="btn btn-warning" type="button" name="button">Edit</button></a>
+              </td>
+              <td>
+                <form method="POST" action="/employees/{{employee.id}}/delete?_method=DELETE">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

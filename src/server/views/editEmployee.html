@@ -1,0 +1,50 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <h1>{{title}}</h1>
+    <form class="form-horizontal" action="/employees" method="POST">
+      <div class="form-group">
+        <h4><label class="col-xs-2 control-label" for="first_name">First Name</label></h4>
+        <div class="col-xs-10">
+          <input type="text" name="first_name" value="{{first_name}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <h4><label class="col-xs-2 control-label" for="last_name">Last Name</label></h4>
+        <div class="col-xs-10">
+          <input type="text" name="last_name" value="{{last_name}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <h4><label class="col-xs-2 control-label" for="email">Email</label></h4>
+        <div class="col-xs-10">
+          <input type="email" name="email" value="{{email}}">
+        </div>
+      </div>
+      <div class="form-group text-right">
+        <label for="favorite_donut" class="col-xs-1 col-xs-offset-1">Favorite Donut</label>
+        <select class="col-xs-6" name="favorite_donut" required>
+          {% for donut in donuts%}
+          <option value="{{donut.id}}" {% if favorite_donut == donut.id %} selected="selected" {% endif %}>{{donut.name}} with {{donut.topping}} topping</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group text-right">
+        <label for="shop_id" class="col-xs-1 col-xs-offset-1">Shop</label>
+        <select class="col-xs-6" name="shop_id" required>
+          {% for shop in shops%}
+          <option value="{{shop.id}}" {% if shop_id == shop.id %} selected="selected" {% endif %}>{{shop.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-xs-offset-2">
+        <input class="btn btn-warning" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
