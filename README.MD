@@ -1,3 +1,6 @@
+##Live-site of completed exercise:
+[I'm an inline-style link](http://donut-tycoon-ryan-pando.herokuapp.com/shops)
+
 # Donut Tycoon
 
 In this assessment, you'll build a RESTful, database-driven, HTTP server.
